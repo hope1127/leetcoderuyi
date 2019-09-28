@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var reverse = function (x) {
+            var flag = 0;
+            if (x < 0) {
+                x = -x;
+                flag = 1;
+            }
+            var t = x.toString();
+            var arr = t.split('');
+            for (var i = arr.length - 1; i > 0; i--) {
+                if (arr[i] != 0) {
+                    break;
+                }
+                arr.splice(i, 1);
+            }
+            arr = arr.reverse();
+            arr = arr.join('');
+            arr = Number(arr);
+
+            if (flag) {
+                if (arr > Math.pow(2, 31)) {
+                    return 0;
+                }
+                arr = -arr;
+                return arr;
+            } else {
+                if (arr > Math.pow(2, 31) - 1) {
+                    return 0;
+                }
+                return arr;
+            }
+        };
+
+    </script>
+</body>
+
+</html>

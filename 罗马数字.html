@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //定义一个函数使罗马数字转成整数
+        var romanToInt = function (s) {
+            var a = 0;//变量a用来保存转化的整数 
+            //obj对象里面保存了罗马数字及对应的值；
+            var obj = {
+                I: 1,
+                V: 5,
+                X: 10,
+                L: 50,
+                C: 100,
+                D: 500,
+                M: 1000
+            }
+            //for循环遍历传入的罗马数字，并且通过对象得到对应的整数值；
+            for (var i = 0; i < s.length; i++) {
+                //相加的话遍历不到最后一个的值需要加上；
+                if (i == s.length - 1) {
+                    a = a +obj[s[s.length-1]];
+                    return a;
+                }
+              //判断是相加还是相减相减的话是加上两数之和，所以遍历需要跳过一位；
+                if (obj[s[i]] < obj[s[i + 1]]) {
+                    a = a + (obj[s[i + 1]] - obj[s[i]]);
+                    i++;//跳过一位
+                } else {
+                    a += obj[s[i]];
+                }
+            }
+            return a;
+        };
+        console.log(romanToInt('III'))
+
+    </script>
+</body>
+
+</html>
